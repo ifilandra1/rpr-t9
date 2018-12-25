@@ -172,6 +172,16 @@ Connection conn;
     }
 
 
+    Drzava nadjiDrzavu(String drzava) {
+        for(Drzava d : listadrzava) {
+
+            if(d.getNazivgrada().equals(drzava)) return d;
+        }
+
+return null;
+    }
+
+
 
 
 
