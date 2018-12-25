@@ -206,14 +206,14 @@ return null;
 
     public static void kreirajbazu() {
 
-        String grad= "CREATE TABLE grad \n"+
+        String grad= "CREATE TABLE IF NOT EXISTS grad \n"+
                 "(\n id int PRIMARY KEY," +
                 "naziv text," +
                 "broj_stanovnika int," +
                 "drzava int, \n" +
                 "constraint grad_drzava_id_fk FOREIGN KEY (drzava) REFERENCES drzava(id)\n" +
                 ");";
-        String drzava = "CREATE TABLE drzava \n"+
+        String drzava = "CREATE TABLE IF NOT EXISTS drzava \n"+
                 "(\n id int PRIMARY KEY," +
                 "naziv text," +
                 "glavni_grad int, \n" +
