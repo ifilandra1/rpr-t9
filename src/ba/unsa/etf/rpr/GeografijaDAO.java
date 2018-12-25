@@ -119,6 +119,31 @@ Connection conn;
 
     }
 
+    public void dodajDrzavu(Drzava drzava) {
+
+        listadrzava.add(drzava);
+        int id=0;
+        for(Grad g:listagradova) {
+            if(g.getNaziv()==drzava.getNazivgrada())
+            id=g.getId();
+        }
+
+        String s = "INSERT INTO drzava (naziv, broj_stanovnika, drzava) VALUES(?,?)";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(s);
+            stmt.setString(1, drzava.getNaziv());
+            stmt.setInt(2, id);
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
 
     public static void kreirajbazu() {
 

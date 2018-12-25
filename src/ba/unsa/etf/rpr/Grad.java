@@ -5,11 +5,20 @@ public class Grad {
     private String naziv;
     private int broj_stanovnika;
     private Drzava drzava;
+    private int id;
 
     public Grad(String naziv, int broj_stanovnika, Drzava drzava) {
         this.naziv = naziv;
         this.broj_stanovnika = broj_stanovnika;
         this.drzava = drzava;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNaziv() {
