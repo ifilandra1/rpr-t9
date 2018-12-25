@@ -24,7 +24,7 @@
          <children>
             <Label text="Unesi naziv drzave" />
             <TextField fx:id="drzavaField" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" text="Brisanje" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" text="Brisanje" GridPane.columnIndex="1" onAction="#izbrisi" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" text="Glavni grad" onAction="#glavnigrad" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="lbl1" text="Label" GridPane.rowIndex="3" />
          </children>

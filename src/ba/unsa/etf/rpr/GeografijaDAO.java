@@ -140,6 +140,10 @@ private static GeografijaDAO instance = null;
 
     }
 
+    public ArrayList<Drzava> getListadrzava() {
+        return listadrzava;
+    }
+
     public void dodajDrzavu(Drzava drzava) {
 
         listadrzava.add(drzava);

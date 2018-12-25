@@ -27,5 +27,16 @@ public class Controller {
         lbl1.setText(s);
     }
 
+    public void izbrisi() {
+        int velicina = GeografijaDAO.getInstance().getListadrzava().size();
+
+        GeografijaDAO.getInstance().obrisiDrzavu(drzavaproperty.get());
+
+        if(velicina!=GeografijaDAO.getInstance().getListadrzava().size())
+            lbl1.setText("Drzava "+drzavaproperty.get()+" obrisana");
+        else lbl1.setText("Unesena drzava nije u bazi");
+    }
+
+
 
 }
