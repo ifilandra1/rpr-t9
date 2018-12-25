@@ -95,11 +95,28 @@ Connection conn;
 
     }
 
-    ArrayList<Grad> gradovi() {
+   public ArrayList<Grad> gradovi() {
 
         TreeSet<Grad> set=new TreeSet<>(listagradova);
         ArrayList<Grad> lista=new ArrayList<>(set);
         return lista;
+    }
+
+    public void dodajGrad(Grad grad) {
+
+     listagradova.add(grad);
+        String s = "INSERT INTO grad (naziv, broj_stanovnika, drzava) VALUES(?,?,?)";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(s);
+            stmt.setString(1, grad.getNaziv());
+            stmt.setInt(2, grad.getBroj_stanovnika());
+            stmt.setInt(3, grad.getDrzava().getId());
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

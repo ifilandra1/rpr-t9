@@ -4,6 +4,15 @@ public class Drzava {
 
     private String naziv;
      private String nazivgrada;
+     private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Drzava(String naziv, String nazivgrada) {
         this.naziv = naziv;
