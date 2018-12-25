@@ -20,15 +20,17 @@ private ArrayList<Grad> listagradova;
             ResultSet result = stmt.executeQuery(upit);
         } catch (SQLException e) {
 
-            listadrzava.add(new Drzava("Francuska", "Pariz"));
-            listadrzava.add(new Drzava("Engleska","London"));
-            listadrzava.add(new Drzava("Austrija", "Beč"));
+            kreirajbazu();
 
-            listagradova.add(new Grad("Pariz",2206488, new Drzava("Francuska", "Pariz")));
-            listagradova.add(new Grad("London",8825000, new Drzava("Engleska", "London") ));
-            listagradova.add(new Grad("Beč", 1899055,new Drzava ("Austrija", "Beč")));
-            listagradova.add(new Grad("Manchester", 545500, new Drzava ("Engleska", "London")));
-            listagradova.add(new Grad("Graz",280200, new Drzava("Austrija", "Beč")));
+            Drzava d1= new Drzava("Francuska", "Pariz");
+            Drzava d2= new Drzava("Engleska", "London");
+            Drzava d3 = new Drzava("Austrija", "Beč");
+
+            listagradova.add(new Grad("Pariz",2206488, d1));
+            listagradova.add(new Grad("London",8825000,d2));
+            listagradova.add(new Grad("Beč", 1899055,d3));
+            listagradova.add(new Grad("Manchester", 545500, d2));
+            listagradova.add(new Grad("Graz",280200, d3));
 
         }
     }
@@ -46,6 +48,35 @@ private ArrayList<Grad> listagradova;
         return null;
     }
 
+    public static void kreirajbazu() {
+
+        String grad= "CREATE TABLE grad \n"+
+                "(\n id int PRIMARY KEY," +
+                "naziv text," +
+                "broj_stanovnika int," +
+                "drzava int, \n" +
+                "constraint grad_drzava_id_fk FOREIGN KEY (drzava) REFERENCES drzava(id)\n" +
+                ");";
+        String drzava = "CREATE TABLE drzava \n"+
+                "(\n id int PRIMARY KEY," +
+                "naziv text," +
+                "glavni_grad int, \n" +
+                "constraint drzava_grad_id_fk FOREIGN KEY (glavni_grad) REFERENCES grad(id)\n" +
+                ");";
+
+        String url= "jdbc:sqlite:baza.db";
+        try {
+            Connection conn = DriverManager.getConnection(url);
+            Statement stmt1 = conn.createStatement();
+            Statement stmt2 = conn.createStatement();
+            stmt1.execute(grad);
+            stmt2.execute(drzava);
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 
