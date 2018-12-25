@@ -9,6 +9,7 @@ public class GeografijaDAO {
 
 private ArrayList<Drzava> listadrzava;
 private ArrayList<Grad> listagradova;
+Connection conn;
 
     private GeografijaDAO () {
 
@@ -17,7 +18,7 @@ private ArrayList<Grad> listagradova;
         String upit1 = "SELECT * FROM grad";
         String upit2= "SELECT * FROM drzava";
         try {
-            Connection conn = DriverManager.getConnection(url);
+             conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(upit1);
 
@@ -70,6 +71,16 @@ private ArrayList<Grad> listagradova;
              }
 
          }
+
+         try {
+             PreparedStatement p = conn.prepareStatement("DELETE FROM drzava WHERE naziv = ?");
+             p.setString(1, drzava);
+             p.execute();
+         }
+         catch(SQLException e) {
+             e.printStackTrace();
+         }
+
 
     }
 
