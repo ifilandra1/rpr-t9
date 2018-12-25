@@ -28,5 +28,11 @@ public class Grad {
         this.broj_stanovnika = broj_stanovnika;
     }
 
+    public Drzava getDrzava() {
+        return drzava;
+    }
 
+    public void setDrzava(Drzava drzava) {
+        this.drzava = drzava;
+    }
 }

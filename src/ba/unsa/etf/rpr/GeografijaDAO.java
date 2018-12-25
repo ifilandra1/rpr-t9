@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class GeografijaDAO {
 
@@ -13,11 +14,14 @@ private ArrayList<Grad> listagradova;
 
 
         String url="jdbc:sqlite:resources/baza.db";
-        String upit = "SELECT ";
+        String upit1 = "SELECT * FROM grad";
+        String upit2= "SELECT * FROM drzava";
         try {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery(upit);
+            ResultSet result = stmt.executeQuery(upit1);
+
+
         } catch (SQLException e) {
 
             kreirajbazu();
@@ -47,6 +51,29 @@ private ArrayList<Grad> listagradova;
         }
         return null;
     }
+
+    void obrisiDrzavu(String drzava) {
+
+         Iterator it = listadrzava.iterator();
+         while(it.hasNext()) {
+
+             Drzava pomocna =  (Drzava) it.next();
+             if(pomocna.getNaziv()==drzava) {
+
+                 Iterator it2= listagradova.iterator();
+                 while(it2.hasNext()) {
+                     Grad pomocni = (Grad) it2.next();
+                     if(pomocni.getDrzava().getNaziv().equals(pomocna.getNaziv()))
+                         it2.remove();
+                 }
+                      it.remove();
+             }
+
+         }
+
+    }
+
+
 
     public static void kreirajbazu() {
 
