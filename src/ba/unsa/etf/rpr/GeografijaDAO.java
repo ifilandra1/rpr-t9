@@ -33,6 +33,20 @@ private ArrayList<Grad> listagradova;
         }
     }
 
+    Grad glavnigrad (String drzava) {
+
+        for(Drzava d: listadrzava) {
+            if(d.getNaziv().equals(drzava)) {
+                for(Grad g: listagradova) {
+                    if(g.getNaziv()==d.getNazivgrada()) return g;
+                }
+
+            }
+        }
+        return null;
+    }
+
+
 
 
 }
