@@ -55,6 +55,7 @@ Connection conn;
 
     void obrisiDrzavu(String drzava) {
 
+        ArrayList<String> listaimenagradova= new ArrayList<>();
          Iterator it = listadrzava.iterator();
          while(it.hasNext()) {
 
@@ -64,8 +65,10 @@ Connection conn;
                  Iterator it2= listagradova.iterator();
                  while(it2.hasNext()) {
                      Grad pomocni = (Grad) it2.next();
-                     if(pomocni.getDrzava().getNaziv().equals(pomocna.getNaziv()))
+                     if(pomocni.getDrzava().getNaziv().equals(pomocna.getNaziv())) {
+                         listaimenagradova.add(new String(pomocni.getNaziv()));
                          it2.remove();
+                     }
                  }
                       it.remove();
              }
@@ -76,6 +79,14 @@ Connection conn;
              PreparedStatement p = conn.prepareStatement("DELETE FROM drzava WHERE naziv = ?");
              p.setString(1, drzava);
              p.execute();
+
+             p=conn.prepareStatement("DELETE FROM grad WHERE naziv = ?");
+             for(int i=0;i<listaimenagradova.size();i++) {
+                 p.setString(1,listaimenagradova.get(i));
+                 p.execute();
+             }
+
+
          }
          catch(SQLException e) {
              e.printStackTrace();
