@@ -12,10 +12,18 @@ public class Main {
 
         String s="";
         for(Grad g: gradovi ){
-
             s=s+ g.getNaziv() +"("+g.getDrzava().getNaziv()+") - "+g.getBrojStanovnika()+'\n';
         }
         return s;
+    }
+
+
+    public void glavniGrad() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Unesite naziv drzave");
+        String s = scan.next();
+        System.out.println("Glavni grad drzave "+s+" je "+GeografijaDAO.getInstance().glavniGrad(s).getNaziv());
+
     }
 
 
