@@ -3,11 +3,11 @@ package ba.unsa.etf.rpr;
 public class Drzava {
 
     private String naziv;
-    private int id;
+     private String nazivgrada;
 
-    public Drzava(String naziv, int id) {
+    public Drzava(String naziv, String nazivgrada) {
         this.naziv = naziv;
-        this.id = id;
+        this.nazivgrada = nazivgrada;
     }
 
     public String getNaziv() {
