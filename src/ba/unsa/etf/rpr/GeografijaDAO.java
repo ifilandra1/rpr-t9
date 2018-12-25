@@ -10,10 +10,12 @@ public class GeografijaDAO {
 private ArrayList<Drzava> listadrzava;
 private ArrayList<Grad> listagradova;
 Connection conn;
+
 private static GeografijaDAO instance = null;
 
     private GeografijaDAO () {
-
+             listadrzava=new ArrayList<>();
+             listagradova=new ArrayList<>();
 
         String url="jdbc:sqlite:resources/baza.db";
         String upit1 = "SELECT * FROM grad";
