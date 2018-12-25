@@ -32,13 +32,20 @@ private static GeografijaDAO instance = null;
             Drzava d2= new Drzava("Engleska", "London");
             Drzava d3 = new Drzava("Austrija", "Beč");
 
+            Grad g1 = new Grad("Pariz",2206488, d1);
+            Grad g2 = new Grad("London",8825000, d2);
+            Grad g3 = new Grad("Beč",1899055, d3);
+            Grad g4 = new Grad("Manchester",545500, d2);
+            Grad g5 = new Grad("Graz", 280200, d3);
 
+           d1.setGlavniGrad(g1);
+           d2.setGlavniGrad(g2);
+           d3.setGlavniGrad(g3);
 
-            listagradova.add(new Grad("Pariz",2206488, d1));
-            listagradova.add(new Grad("London",8825000,d2));
-            listagradova.add(new Grad("Beč", 1899055,d3));
-            listagradova.add(new Grad("Manchester", 545500, d2));
-            listagradova.add(new Grad("Graz",280200, d3));
+           listagradova.add(g1); listagradova.add(g2); listagradova.add(g3);listagradova.add(g4);
+           listagradova.add(g5);
+           listadrzava.add(d1);listadrzava.add(d2); listadrzava.add(d3);
+           // umjesto ovoga probati raditi sa dodajDrzavu i dodajGrad
 
         }
     }
