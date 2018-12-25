@@ -5,7 +5,7 @@ public class Grad {
     private String naziv;
     private int id;
     private int broj_stanovnika;
-    private String nazivdrzave;
+    private Drzava drzava;
 
     public Grad(String naziv, int id, int broj_stanovnika) {
         this.naziv = naziv;
