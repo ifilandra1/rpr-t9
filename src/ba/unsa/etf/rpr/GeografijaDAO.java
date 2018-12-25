@@ -141,6 +141,36 @@ Connection conn;
 
     }
 
+    void izmijeniGrad(Grad grad) {
+        Iterator it = listagradova.iterator();
+        while(it.hasNext()) {
+
+            Grad pomocni= (Grad)it.next();
+
+            if(pomocni.getId()==grad.getId()) {
+
+                pomocni.setNaziv(grad.getNaziv());
+                pomocni.setBroj_stanovnika(grad.getBroj_stanovnika());
+                pomocni.setDrzava(grad.getDrzava());
+            }
+        }
+
+        String s = "UPDATE grad SET naziv = ? broj_stanovnika=? drzava=?";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(s);
+            stmt.setString(1, grad.getNaziv());
+            stmt.setInt(2, grad.getBroj_stanovnika());
+            stmt.setInt(3, grad.getDrzava().getId());
+            stmt.execute();
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
 
 
