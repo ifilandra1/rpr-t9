@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.TreeSet;
 
 public class GeografijaDAO {
 
@@ -92,9 +93,14 @@ Connection conn;
              e.printStackTrace();
          }
 
-
     }
 
+    ArrayList<Grad> gradovi() {
+
+        TreeSet<Grad> set=new TreeSet<>(listagradova);
+        ArrayList<Grad> lista=new ArrayList<>(set);
+        return lista;
+    }
 
 
     public static void kreirajbazu() {

@@ -35,4 +35,14 @@ public class Grad {
     public void setDrzava(Drzava drzava) {
         this.drzava = drzava;
     }
+
+
+    public int compareTo(Grad g) {
+
+    if(this.broj_stanovnika<g.getBroj_stanovnika()) return -1;
+    if(this.broj_stanovnika>g.getBroj_stanovnika()) return 1;
+     else return 0;
+    }
+
+
 }
