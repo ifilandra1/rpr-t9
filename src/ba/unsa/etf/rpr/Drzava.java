@@ -5,9 +5,22 @@ public class Drzava {
     private String naziv;
      private String nazivgrada;
      private int id;
+   private Grad glavniGrad;
+
 
     public int getId() {
         return id;
+    }
+
+    public Grad getGlavniGrad() {
+        return glavniGrad;
+    }
+
+    public void setGlavniGrad(Grad glavniGrad) {
+        this.glavniGrad = glavniGrad;
+    }
+
+    public Drzava() {
     }
 
     public void setId(int id) {

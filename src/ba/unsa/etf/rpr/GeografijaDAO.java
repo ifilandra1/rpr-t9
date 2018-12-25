@@ -2,7 +2,6 @@ package ba.unsa.etf.rpr;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.TreeSet;
 
@@ -11,6 +10,7 @@ public class GeografijaDAO {
 private ArrayList<Drzava> listadrzava;
 private ArrayList<Grad> listagradova;
 Connection conn;
+private static GeografijaDAO instance = null;
 
     private GeografijaDAO () {
 
@@ -32,6 +32,8 @@ Connection conn;
             Drzava d2= new Drzava("Engleska", "London");
             Drzava d3 = new Drzava("Austrija", "Beč");
 
+
+
             listagradova.add(new Grad("Pariz",2206488, d1));
             listagradova.add(new Grad("London",8825000,d2));
             listagradova.add(new Grad("Beč", 1899055,d3));
@@ -41,7 +43,17 @@ Connection conn;
         }
     }
 
-    Grad glavnigrad (String drzava) {
+    public static GeografijaDAO getInstance() {
+        if (instance == null) initialize();
+        return instance;
+    }
+    public static void removeInstance() { instance = null; }
+
+    private static void initialize() {
+        instance = new GeografijaDAO();
+    }
+
+    Grad glavniGrad (String drzava) {
 
         for(Drzava d: listadrzava) {
             if(d.getNaziv().equals(drzava)) {
@@ -110,7 +122,7 @@ Connection conn;
         try {
             PreparedStatement stmt = conn.prepareStatement(s);
             stmt.setString(1, grad.getNaziv());
-            stmt.setInt(2, grad.getBroj_stanovnika());
+            stmt.setInt(2, grad.getBrojStanovnika());
             stmt.setInt(3, grad.getDrzava().getId());
         }
         catch(SQLException e) {
@@ -150,7 +162,7 @@ Connection conn;
             if(pomocni.getId()==grad.getId()) {
 
                 pomocni.setNaziv(grad.getNaziv());
-                pomocni.setBroj_stanovnika(grad.getBroj_stanovnika());
+                pomocni.setBrojStanovnika(grad.getBrojStanovnika());
                 pomocni.setDrzava(grad.getDrzava());
             }
         }
@@ -160,7 +172,7 @@ Connection conn;
         try {
             PreparedStatement stmt = conn.prepareStatement(s);
             stmt.setString(1, grad.getNaziv());
-            stmt.setInt(2, grad.getBroj_stanovnika());
+            stmt.setInt(2, grad.getBrojStanovnika());
             stmt.setInt(3, grad.getDrzava().getId());
             stmt.execute();
         }

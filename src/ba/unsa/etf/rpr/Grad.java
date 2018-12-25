@@ -3,14 +3,17 @@ package ba.unsa.etf.rpr;
 public class Grad {
 
     private String naziv;
-    private int broj_stanovnika;
+    private int brojStanovnika;
     private Drzava drzava;
     private int id;
 
     public Grad(String naziv, int broj_stanovnika, Drzava drzava) {
         this.naziv = naziv;
-        this.broj_stanovnika = broj_stanovnika;
+        this.brojStanovnika = broj_stanovnika;
         this.drzava = drzava;
+    }
+
+    public Grad() {
     }
 
     public int getId() {
@@ -29,12 +32,12 @@ public class Grad {
         this.naziv = naziv;
     }
 
-    public int getBroj_stanovnika() {
-        return broj_stanovnika;
+    public int getBrojStanovnika() {
+        return brojStanovnika;
     }
 
-    public void setBroj_stanovnika(int broj_stanovnika) {
-        this.broj_stanovnika = broj_stanovnika;
+    public void setBrojStanovnika(int brojStanovnika) {
+        this.brojStanovnika = brojStanovnika;
     }
 
     public Drzava getDrzava() {
@@ -48,8 +51,8 @@ public class Grad {
 
     public int compareTo(Grad g) {
 
-    if(this.broj_stanovnika<g.getBroj_stanovnika()) return -1;
-    if(this.broj_stanovnika>g.getBroj_stanovnika()) return 1;
+    if(this.brojStanovnika <g.getBrojStanovnika()) return -1;
+    if(this.brojStanovnika >g.getBrojStanovnika()) return 1;
      else return 0;
     }
 
