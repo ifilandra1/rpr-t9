@@ -1,10 +1,17 @@
 package ba.unsa.etf.rpr;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+
 
     public static String ispisiGradove() {
 
@@ -28,9 +35,8 @@ public class Main {
 
 
 
-
     public static void main(String[] args) {
-
+        //dodati kod za pokretanje gui-a
 
     }
 
